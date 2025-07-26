@@ -56,7 +56,13 @@ export default function OrderForm() {
         ))}
       </ul>
 
-      <button onClick={handleSubmit}>אשר הזמנה</button>
+      <button 
+  onClick={handleSubmit} 
+  disabled={cartItems.length === 0}
+>
+  אשר הזמנה
+</button>
+
     </div>
   );
 }

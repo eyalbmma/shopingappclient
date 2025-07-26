@@ -1,19 +1,12 @@
 import axios from 'axios';
 
-// בסיסי URL מופרדים לפי שירות
-const DOTNET_BASE_URL = 'http://localhost:7137/api'; // ASP.NET Core
-const NODE_BASE_URL = 'http://localhost:5000/api';   // Node.js
+const DOTNET_BASE_URL = process.env.REACT_APP_DOTNET_BASE_URL!;
+const NODE_BASE_URL = process.env.REACT_APP_NODE_BASE_URL!;
 
 // ✅ שליפת קטגוריות (משרת .NET)
 export const getCategories = async () => {
   const response = await axios.get(`${DOTNET_BASE_URL}/categories`);
   return response.data;
-};
-
-// ❌ פונקציה זו לא נדרשת לפי המחוון (אין endpoint כזה בשרת .NET)
-export const getProductsByCategory = async (categoryId: number) => {
-  console.warn('getProductsByCategory not implemented in API – all products are returned with categories.');
-  return [];
 };
 
 // ✅ שליחת הזמנה (לשרת Node.js)
